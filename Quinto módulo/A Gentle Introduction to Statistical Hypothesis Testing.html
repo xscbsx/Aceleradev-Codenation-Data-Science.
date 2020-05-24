@@ -1,0 +1,2448 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en-US" style="min-height: 100%;" class=" js csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/form"></script><script type="text/javascript" async="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/js"></script><script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/visit"></script>
+
+
+
+<link rel="pingback" href="https://machinelearningmastery.com/xmlrpc.php">
+
+<!--  Mobile viewport scale -->
+<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport">
+
+	<!-- This site is optimized with the Yoast SEO plugin v14.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>A Gentle Introduction to Statistical Hypothesis Testing</title>
+	<meta name="robots" content="index, follow">
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	<link rel="canonical" href="https://machinelearningmastery.com/statistical-hypothesis-tests/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A Gentle Introduction to Statistical Hypothesis Testing">
+	<meta property="og:description" content="Data must be interpreted in order to add meaning. We can interpret data by assuming a specific structure our outcome and use statistical methods to confirm or reject the assumption. The assumption is called a hypothesis and the statistical tests used for this purpose are called statistical hypothesis tests. Whenever we want to make claims […]">
+	<meta property="og:url" content="https://machinelearningmastery.com/statistical-hypothesis-tests/">
+	<meta property="og:site_name" content="Machine Learning Mastery">
+	<meta property="article:publisher" content="https://www.facebook.com/MachineLearningMastery/">
+	<meta property="article:author" content="https://www.facebook.com/MachineLearningMastery/">
+	<meta property="article:published_time" content="2018-05-13T19:00:57+00:00">
+	<meta property="article:modified_time" content="2020-04-09T22:40:31+00:00">
+	<meta property="og:image" content="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/A-Gentle-Introduction-to-Statistical-Hypothesis-Tests.jpg">
+	<meta property="og:image:width" content="640">
+	<meta property="og:image:height" content="426">
+	<script id="twitter-wjs" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/widgets.js.download"></script><script type="text/javascript" async="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/client.js.download"></script><script id="twitcount_plugins" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/twitcount.js.download"></script><script type="text/javascript" async="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/9556588.js.download"></script><script type="text/javascript" async="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/analytics.js.download"></script><script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://machinelearningmastery.com/#organization","name":"Machine Learning Mastery","url":"https://machinelearningmastery.com/","sameAs":["https://www.facebook.com/MachineLearningMastery/","https://www.linkedin.com/company/machine-learning-mastery","https://twitter.com/TeachTheMachine"],"logo":{"@type":"ImageObject","@id":"https://machinelearningmastery.com/#logo","inLanguage":"en-US","url":"https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/cropped-icon.png","width":512,"height":512,"caption":"Machine Learning Mastery"},"image":{"@id":"https://machinelearningmastery.com/#logo"}},{"@type":"WebSite","@id":"https://machinelearningmastery.com/#website","url":"https://machinelearningmastery.com/","name":"Machine Learning Mastery","description":"Making developers awesome at machine learning","publisher":{"@id":"https://machinelearningmastery.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://machinelearningmastery.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://machinelearningmastery.com/statistical-hypothesis-tests/#primaryimage","inLanguage":"en-US","url":"https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/A-Gentle-Introduction-to-Statistical-Hypothesis-Tests.jpg","width":640,"height":426,"caption":"A Gentle Introduction to Statistical Hypothesis Tests Photo by Kevin Verbeem, some rights reserved."},{"@type":"WebPage","@id":"https://machinelearningmastery.com/statistical-hypothesis-tests/#webpage","url":"https://machinelearningmastery.com/statistical-hypothesis-tests/","name":"A Gentle Introduction to Statistical Hypothesis Testing","isPartOf":{"@id":"https://machinelearningmastery.com/#website"},"primaryImageOfPage":{"@id":"https://machinelearningmastery.com/statistical-hypothesis-tests/#primaryimage"},"datePublished":"2018-05-13T19:00:57+00:00","dateModified":"2020-04-09T22:40:31+00:00","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://machinelearningmastery.com/statistical-hypothesis-tests/"]}]},{"@type":"Article","@id":"https://machinelearningmastery.com/statistical-hypothesis-tests/#article","isPartOf":{"@id":"https://machinelearningmastery.com/statistical-hypothesis-tests/#webpage"},"author":{"@id":"https://machinelearningmastery.com/#/schema/person/e2d0ff4828d406a3b47e5a3c9a0591e8"},"headline":"A Gentle Introduction to Statistical Hypothesis Testing","datePublished":"2018-05-13T19:00:57+00:00","dateModified":"2020-04-09T22:40:31+00:00","commentCount":"32","mainEntityOfPage":{"@id":"https://machinelearningmastery.com/statistical-hypothesis-tests/#webpage"},"publisher":{"@id":"https://machinelearningmastery.com/#organization"},"image":{"@id":"https://machinelearningmastery.com/statistical-hypothesis-tests/#primaryimage"},"articleSection":"Statistics","inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://machinelearningmastery.com/statistical-hypothesis-tests/#respond"]}]},{"@type":["Person"],"@id":"https://machinelearningmastery.com/#/schema/person/e2d0ff4828d406a3b47e5a3c9a0591e8","name":"Jason Brownlee","image":{"@type":"ImageObject","@id":"https://machinelearningmastery.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=96&d=mm&r=g","caption":"Jason Brownlee"},"description":"Jason Brownlee, PhD is a machine learning specialist who teaches developers how to get results with modern machine learning methods via hands-on tutorials.","sameAs":["https://www.facebook.com/MachineLearningMastery/","https://www.linkedin.com/company/machine-learning-mastery","https://twitter.com/teachthemachine"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Machine Learning Mastery » Feed" href="https://feeds.feedburner.com/MachineLearningMastery">
+<link rel="alternate" type="application/rss+xml" title="Machine Learning Mastery » Comments Feed" href="https://machinelearningmastery.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Machine Learning Mastery » A Gentle Introduction to Statistical Hypothesis Testing Comments Feed" href="https://machinelearningmastery.com/statistical-hypothesis-tests/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/machinelearningmastery.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.1"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./A Gentle Introduction to Statistical Hypothesis Testing_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="crayon-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-classic-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/classic.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="simple-sitemap-css-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/simple-sitemap.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssb-front-css-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/front.css" type="text/css" media="all">
+<link rel="stylesheet" id="ewd-ufaq-style-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/ewd-ufaq-styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="ewd-ufaq-rrssb-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/rrssb-min.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-testimonials-css-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/testimonials.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-stylesheet-css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/style.css" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link href="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/themes/canvas-new/css/non-responsive.css" rel="stylesheet" type="text/css" />
+<style type="text/css">.col-full, #wrapper { width: 960px; max-width: 960px; } #inner-wrapper { padding: 0; } body.full-width #header, #nav-container, body.full-width #content, body.full-width #footer-widgets, body.full-width #footer { padding-left: 0; padding-right: 0; } body.fixed-mobile #top, body.fixed-mobile #header-container, body.fixed-mobile #footer-container, body.fixed-mobile #nav-container, body.fixed-mobile #footer-widgets-container { min-width: 960px; padding: 0 1em; } body.full-width #content { width: auto; padding: 0 1em;}</style>
+<![endif]-->
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/jquery.js.download"></script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/machinelearningmastery.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/crayon.min.js.download"></script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/front.js.download"></script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/third-party.min.js.download"></script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/modernizr.min.js.download"></script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/general.min.js.download"></script>
+<link rel="https://api.w.org/" href="https://machinelearningmastery.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://machinelearningmastery.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://machinelearningmastery.com/?p=5233">
+<link rel="alternate" type="application/json+oembed" href="https://machinelearningmastery.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmachinelearningmastery.com%2Fstatistical-hypothesis-tests%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://machinelearningmastery.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmachinelearningmastery.com%2Fstatistical-hypothesis-tests%2F&amp;format=xml">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/js(1)"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-44039733-3', { 'optimize_id': 'GTM-MV6J2DK'});
+</script>
+ <style media="screen">
+
+		.simplesocialbuttons.simplesocialbuttons_inline .ssb-fb-like {
+	  margin: ;
+	}
+		 /*inline margin*/
+	
+	
+	
+	
+	
+	
+			 .simplesocialbuttons.simplesocialbuttons_inline.simplesocial-simple-icons button{
+		 margin: ;
+	 }
+
+			 /*margin-digbar*/
+
+	
+	
+	
+	
+	
+	
+	
+</style>
+
+<!-- Open Graph Meta Tags generated by Simple Social Buttons 3.1.1 -->
+<meta property="og:title" content="A Gentle Introduction to Statistical Hypothesis Testing - Machine Learning Mastery">
+<meta property="og:description" content="Data must be interpreted in order to add meaning.
+
+We can interpret data by assuming a specific structure our outcome and use statistical methods to confirm or reject the assumption. The assumption is called a hypothesis and the statistical tests used for this purpose are called statistical hypothesis tests.
+
+Whenever we want to make claims about the distribution of data or whether">
+<meta property="og:url" content="https://machinelearningmastery.com/statistical-hypothesis-tests/">
+<meta property="og:site_name" content="Machine Learning Mastery">
+<meta property="og:image" content="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/A-Gentle-Introduction-to-Statistical-Hypothesis-Tests.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Data must be interpreted in order to add meaning.
+
+We can interpret data by assuming a specific structure our outcome and use statistical methods to confirm or reject the assumption. The assumption is called a hypothesis and the statistical tests used for this purpose are called statistical hypothesis tests.
+
+Whenever we want to make claims about the distribution of data or whether">
+<meta name="twitter:title" content="A Gentle Introduction to Statistical Hypothesis Testing - Machine Learning Mastery">
+<meta property="twitter:image" content="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/A-Gentle-Introduction-to-Statistical-Hypothesis-Tests.jpg">
+    <script type="text/javascript">
+        var ajaxurl = 'https://machinelearningmastery.com/wp-admin/admin-ajax.php';
+    </script>
+
+<!-- Custom CSS Styling -->
+<style type="text/css">
+#logo .site-title, #logo .site-description { display:none; }
+body {background-repeat:no-repeat;background-position:top left;background-attachment:scroll;border-top:0px solid #000000;}
+#header {background-repeat:no-repeat;background-position:left top;margin-top:0px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;border:0px solid ;}
+#logo .site-title a {font:bold 40px/1em "Helvetica Neue", Helvetica, sans-serif;color:#222222;}
+#logo .site-description {font:normal 13px/1em "Helvetica Neue", Helvetica, sans-serif;color:#999999;}
+body, p { font:normal 14px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+h1 { font:bold 28px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h2 { font:bold 24px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h3 { font:bold 20px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h4 { font:bold 16px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h5 { font:bold 14px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }h6 { font:bold 12px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }
+.page-title, .post .title, .page .title {font:bold 28px/1.1em "Helvetica Neue", Helvetica, sans-serif;color:#222222;}
+.post .title a:link, .post .title a:visited, .page .title a:link, .page .title a:visited {color:#222222}
+.post-meta { font:normal 12px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+.entry, .entry p{ font:normal 15px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+.post-more {font:normal 13px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:;border-top:0px solid #e6e6e6;border-bottom:0px solid #e6e6e6;}
+#post-author, #connect {border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;border-left:1px solid #e6e6e6;border-right:1px solid #e6e6e6;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background-color:#fafafa}
+.nav-entries a, .woo-pagination { font:normal 13px/1em "Helvetica Neue", Helvetica, sans-serif;color:#888; }
+.woo-pagination a, .woo-pagination a:hover {color:#888!important}
+.widget h3 {font:bold 14px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#555555;border-bottom:1px solid #e6e6e6;}
+.widget_recent_comments li, #twitter li { border-color: #e6e6e6;}
+.widget p, .widget .textwidget { font:normal 13px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+.widget {font:normal 13px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555;border-radius:0px;-moz-border-radius:0px;-webkit-border-radius:0px;}
+#tabs .inside li a, .widget_woodojo_tabs .tabbable .tab-pane li a { font:bold 12px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+#tabs .inside li span.meta, .widget_woodojo_tabs .tabbable .tab-pane li span.meta { font:300 11px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+#tabs ul.wooTabs li a, .widget_woodojo_tabs .tabbable .nav-tabs li a { font:300 11px/2em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+@media only screen and (min-width:768px) {
+ul.nav li a, #navigation ul.rss a, #navigation ul.cart a.cart-contents, #navigation .cart-contents #navigation ul.rss, #navigation ul.nav-search, #navigation ul.nav-search a { font:bold 15px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#ffffff; } #navigation ul.rss li a:before, #navigation ul.nav-search a.search-contents:before { color:#ffffff;}
+#navigation ul.nav > li a:hover, #navigation ul.nav > li:hover a, #navigation ul.nav li ul li a, #navigation ul.cart > li:hover > a, #navigation ul.cart > li > ul > div, #navigation ul.cart > li > ul > div p, #navigation ul.cart > li > ul span, #navigation ul.cart .cart_list a, #navigation ul.nav li.current_page_item a, #navigation ul.nav li.current_page_parent a, #navigation ul.nav li.current-menu-ancestor a, #navigation ul.nav li.current-cat a, #navigation ul.nav li.current-menu-item a { color:#eeeeee!important; }
+#navigation ul.nav > li a:hover, #navigation ul.nav > li:hover, #navigation ul.nav li ul, #navigation ul.cart li:hover a.cart-contents, #navigation ul.nav-search li:hover a.search-contents, #navigation ul.nav-search a.search-contents + ul, #navigation ul.cart a.cart-contents + ul, #navigation ul.nav li.current_page_item a, #navigation ul.nav li.current_page_parent a, #navigation ul.nav li.current-menu-ancestor a, #navigation ul.nav li.current-cat a, #navigation ul.nav li.current-menu-item a{background-color:#84abc7!important}
+#navigation ul.nav li ul, #navigation ul.cart > li > ul > div  { border: 0px solid #dbdbdb; }
+#navigation ul.nav > li:hover > ul  { left: 0; }
+#navigation ul.nav > li  { border-right: 0px solid #dbdbdb; }#navigation ul.nav > li:hover > ul  { left: 0; }
+#navigation { box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; }#navigation ul li:first-child, #navigation ul li:first-child a { border-radius:0px 0 0 0px; -moz-border-radius:0px 0 0 0px; -webkit-border-radius:0px 0 0 0px; }
+#navigation {background:#84abc7;border-top:0px solid #dbdbdb;border-bottom:0px solid #dbdbdb;border-left:0px solid #dbdbdb;border-right:0px solid #dbdbdb;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;}
+#top ul.nav li a { font:normal 12px/1.6em "Helvetica Neue", Helvetica, sans-serif;color:#ddd; }
+}
+#footer, #footer p { font:normal 13px/1.4em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+#footer {border-top:1px solid #dbdbdb;border-bottom:0px solid ;border-left:0px solid ;border-right:0px solid ;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;}
+.magazine #loopedSlider .content h2.title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-magazine .slide-title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.magazine #loopedSlider .content .excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-magazine .slide-content p, .wooslider-theme-magazine .slide-excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.magazine .block .post .title a {font:bold 18px/1.2em Helvetica Neue, Helvetica, sans-serif;color:#222222; }
+#loopedSlider.business-slider .content h2 { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+#loopedSlider.business-slider .content h2.title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-business .has-featured-image .slide-title { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-business .has-featured-image .slide-title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+#wrapper #loopedSlider.business-slider .content p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-business .has-featured-image .slide-content p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-business .has-featured-image .slide-excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.archive_header { font:bold 18px/1em Arial, sans-serif;color:#222222; }
+.archive_header {border-bottom:1px solid #e6e6e6;}
+.archive_header .catrss { display:none; }
+</style>
+
+<!-- Custom Favicon -->
+<link rel="shortcut icon" href="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2019/09/icon-16x16.png">
+
+<!-- Woo Shortcodes CSS -->
+<link href="./A Gentle Introduction to Statistical Hypothesis Testing_files/shortcodes.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Stylesheet -->
+<link href="./A Gentle Introduction to Statistical Hypothesis Testing_files/custom.css" rel="stylesheet" type="text/css">
+
+<!-- Theme version -->
+<meta name="generator" content="Canvas 5.9.21">
+<meta name="generator" content="WooFramework 6.2.9">
+<link rel="icon" href="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/cropped-icon-32x32.png" sizes="32x32">
+<link rel="icon" href="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/cropped-icon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/cropped-icon-180x180.png">
+<meta name="msapplication-TileImage" content="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/cropped-icon-270x270.png">
+		<style type="text/css" id="wp-custom-css">
+			.display-posts-listing.image-left .listing-item {
+	overflow: hidden; 
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+.display-posts-listing.image-left .image {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+.display-posts-listing.image-left .attachment-thumbnail {
+	height: auto; 
+	width: auto; 
+	max-width: 50px; 
+	max-height: 50px;
+	border-radius: 50%;
+}
+
+.display-posts-listing.image-left .title {
+	display: block;
+}
+
+.display-posts-listing.image-left .excerpt-dash { 
+	display: none; 
+}
+
+.display-posts-listing.image-left {
+	margin: 0 0 40px 0;
+}		</style>
+		<script src="./A Gentle Introduction to Statistical Hypothesis Testing_files/can-i-show.js.download"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><link rel="stylesheet" type="text/css" href="./A Gentle Introduction to Statistical Hypothesis Testing_files/twitcount.css" media="all"><style type="text/css">
+  /* === Form-Specific Styles === */
+  /* stylelint-disable */
+
+  #drip-2211 .drip-content,
+  #drip-2211 .drip-header {
+    background: rgb(116,174,203) !important;
+    background: rgba(116,174,203,0.90) !important;
+  }
+
+  #drip-2211 .drip-content h3 {
+    color: #333333 !important;
+    font-size: 21px !important;
+  }
+
+  #drip-2211 .drip-submit-button {
+    background-color: #333333 !important;
+    font-size: 12px !important;
+  }
+
+  #drip-2211 .drip-submit-button:hover {
+    background-color: #191919 !important;
+  }
+
+  #drip-2211 .drip-submit-button:active {
+    background-color: #000000 !important;
+  }
+
+  #drip-2211 dl dt,
+  #drip-2211 .drip-content .drip-description,
+  #drip-2211 .drip-content .classic--checkbox,
+  #drip-2211 .drip-errors {
+    font-size: 13px !important;
+  }
+
+  #drip-2211 .drip-text-field {
+    font-size: 14px !important;
+  }
+
+  /* === Reset styles === */
+
+  .drip-tab h1,
+  .drip-tab h2,
+  .drip-tab h3,
+  .drip-tab div,
+  .drip-tab dl,
+  .drip-tab dt,
+  .drip-tab dd,
+  .drip-tab p,
+  .drip-tab a,
+  .drip-tab .drip-text-field,
+  .drip-tab .drip-text-field:focus,
+  .drip-tab .drip-submit-button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    float: none;
+    width: auto;
+    background-image: none;
+    letter-spacing: 0;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    -webkit-text-shadow: none !important;
+       -moz-text-shadow: none !important;
+            text-shadow: none !important;
+  }
+
+  .drip-tab a {
+    text-decoration: none;
+  }
+
+  .drip-tab :focus {
+    outline: 0;
+  }
+
+  /* === Clearfix === */
+
+  .drip-clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+  * html .drip-clearfix             { zoom: 1; } /* IE6 */
+  *:first-child+html .drip-clearfix { zoom: 1; } /* IE7 */
+
+  /* === Main Container === */
+
+  .drip-tab-container * {
+    box-sizing: content-box;
+  }
+
+  /* === Content === */
+
+  .drip-tab .drip-content {
+    margin: 0;
+    padding: 5px;
+    width: 330px;
+    position: fixed;
+    font-size: 100%;
+    font: inherit;
+    z-index: 10000;
+    color: #333;
+    vertical-align: baseline;
+    text-align: left;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,0.25);
+       -moz-box-shadow: 0px 0px 20px rgba(0,0,0,0.25);
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.25);
+  }
+
+  .drip-tab.bottom .drip-content {
+    bottom: -800px;
+    -webkit-border-radius: 8px 8px 0 0;
+       -moz-border-radius: 8px 8px 0 0;
+            border-radius: 8px 8px 0 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.bottom.left .drip-content {
+    left: 40px;
+  }
+
+  .drip-tab.bottom.right .drip-content {
+    right: 40px;
+  }
+
+  .drip-tab.image-left .drip-content,
+  .drip-tab.image-right .drip-content {
+    width: 510px;
+  }
+
+  .drip-tab.side .drip-content {
+    top: 10%;
+  }
+
+  .drip-tab.side.right .drip-content {
+    right: -550px;
+    -webkit-border-radius: 8px 0 0 8px;
+       -moz-border-radius: 8px 0 0 8px;
+            border-radius: 8px 0 0 8px;
+    -webkit-transition: right 200ms ease-in;
+       -moz-transition: right 200ms ease-in;
+         -o-transition: right 200ms ease-in;
+            transition: right 200ms ease-in;
+  }
+
+  .drip-tab.side.left .drip-content {
+    left: -550px;
+    -webkit-border-radius: 0 8px 8px 0;
+       -moz-border-radius: 0 8px 8px 0;
+            border-radius: 0 8px 8px 0;
+    -webkit-transition: left 200ms ease-in;
+       -moz-transition: left 200ms ease-in;
+         -o-transition: left 200ms ease-in;
+            transition: left 200ms ease-in;
+  }
+
+  .drip-tab.mobile .drip-content {
+    width: 100% !important;
+    bottom: -800px;
+    left: 0;
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.drip-scrollable .drip-content {
+    overflow-y: scroll;
+  }
+
+  /* === Header === */
+
+  .drip-tab .drip-header {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    font-size: 100%;
+    font: inherit;
+    z-index: 10000;
+    color: #333;
+    vertical-align: baseline;
+    text-align: left;
+    -webkit-border-radius: 8px 8px 0 0;
+       -moz-border-radius: 8px 8px 0 0;
+            border-radius: 8px 8px 0 0;
+    -webkit-box-shadow: 0px 10px 28px rgba(0,0,0,0.36);
+       -moz-box-shadow: 0px 10px 28px rgba(0,0,0,0.36);
+            box-shadow: 0px 10px 28px rgba(0,0,0,0.36);
+  }
+
+  .drip-tab.bottom .drip-header {
+    width: 330px;
+    bottom: 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.bottom .drip-header.drip-hidden {
+    bottom: -800px;
+  }
+
+  .drip-tab.bottom.left .drip-header {
+    left: 40px;
+  }
+
+  .drip-tab.bottom.right .drip-header {
+    right: 40px;
+  }
+
+  .drip-tab.bottom.image-left .drip-header,
+  .drip-tab.bottom.image-right .drip-header {
+    width: 510px;
+  }
+
+  .drip-tab.side .drip-header {
+    width: 330px;
+    top: 10%;
+  }
+
+  .drip-tab.side.right .drip-header {
+    right: -100px;
+    -webkit-transition: right 400ms ease-in;
+       -moz-transition: right 400ms ease-in;
+         -o-transition: right 400ms ease-in;
+            transition: right 400ms ease-in;
+    -webkit-transform: rotate(-90deg) !important;
+       -moz-transform: rotate(-90deg) !important;
+        -ms-transform: rotate(-90deg) !important;
+         -o-transform: rotate(-90deg) !important;
+            transform: rotate(-90deg) !important;
+    -webkit-transform-origin: right center;
+       -moz-transform-origin: right center;
+         -o-transform-origin: right center;
+            transform-origin: right center;
+  }
+
+  .drip-tab.side.right .drip-header.drip-hidden {
+    right: -100px;
+  }
+
+  .drip-tab.side.left .drip-header {
+    left: -100px;
+    -webkit-transition: left 400ms ease-in;
+       -moz-transition: left 400ms ease-in;
+         -o-transition: left 400ms ease-in;
+            transition: left 400ms ease-in;
+    -webkit-transform: rotate(90deg) !important;
+       -moz-transform: rotate(90deg) !important;
+        -ms-transform: rotate(90deg) !important;
+         -o-transform: rotate(90deg) !important;
+            transform: rotate(90deg) !important;
+    -webkit-transform-origin: left center;
+       -moz-transform-origin: left center;
+         -o-transform-origin: left center;
+            transform-origin: left center;
+  }
+
+  .drip-tab.side.left .drip-header.drip-hidden {
+    left: -100px;
+  }
+
+  .drip-tab.mobile .drip-header {
+    width: 100% !important;
+    bottom: 0;
+    left: 0;
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+    -webkit-transition: bottom 200ms ease-in;
+       -moz-transition: bottom 200ms ease-in;
+         -o-transition: bottom 200ms ease-in;
+            transition: bottom 200ms ease-in;
+  }
+
+  .drip-tab.mobile .drip-header.drip-hidden {
+    bottom: -300px;
+  }
+
+  /* === Header Toggle === */
+
+  .drip-tab .drip-toggle {
+    display: block;
+    text-decoration: none;
+    padding: 10px 50px 10px 20px; /* extra padding for the arrow */
+  }
+
+  /* === Teaser === */
+
+  .drip-tab .drip-header h2 {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    color: #fff !important;
+    clear: none !important;
+    letter-spacing: 0 !important;
+    width: auto !important;
+  }
+
+  /* === Arrows === */
+
+  .drip-tab .drip-header span.drip-arrow {
+    display: block;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    top: 17px;
+    right: 32px;
+  }
+
+  /* === Panel === */
+
+  .drip-tab .drip-content > div.drip-panel {
+    padding: 15px 15px 12px;
+    background-color: #fff;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+  }
+
+  /* === Powered By === */
+
+  .drip-tab .drip-powered-by {
+    padding: 8px;
+    margin-bottom: -5px;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: left;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 16px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .drip-tab .drip-powered-by a {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+    letter-spacing: 1px;
+    margin-left: 6px;
+  }
+
+  /* === Content Headings & Paragraphs === */
+
+  .drip-tab .drip-content h3 {
+    display: block;
+    margin: 0 20px 0 0 !important;
+    padding: 0 0 15px 0 !important;
+    line-height: 1.4 !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    color: #4477bd !important;
+    clear: none !important;
+  }
+
+  .drip-tab .drip-content .drip-description {
+    margin: 0;
+    padding: 0 0 20px 0;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .drip-tab.image-left .drip-content .drip-description {
+    margin-left: 170px;
+  }
+
+  .drip-tab.image-right .drip-content .drip-description {
+    margin-right: 170px;
+  }
+
+  @media screen and (max-width: 510px) {
+    .drip-tab.image-left .drip-content .drip-description {
+      margin-left: 0; /* 120px; */
+    }
+
+    .drip-tab.image-right .drip-content .drip-description {
+      margin-right: 0; /* 120px; */
+    }
+  }
+
+  .drip-tab .drip-content .drip-description a {
+    text-decoration: underline;
+  }
+
+  .drip-tab .drip-content .drip-description em {
+    font-style: italic;
+  }
+
+  .drip-tab .drip-content .drip-description ul,
+  .drip-tab .drip-content .drip-description ol {
+    list-style-position: outside;
+    margin: 8px 0 8px 30px;
+  }
+
+  .drip-tab .drip-content .drip-description ul li
+  .drip-tab .drip-content .drip-description ol li {
+    padding: 0;
+  }
+
+  .drip-tab .drip-content img.drip-image {
+    margin-bottom: 20px;
+  }
+
+  .drip-tab.image-left .drip-content img.drip-image {
+    float: left;
+    width: 150px;
+  }
+
+  .drip-tab.image-right .drip-content img.drip-image {
+    float: right;
+    width: 150px;
+  }
+
+  @media screen and (max-width: 510px) {
+    .drip-tab.image-left .drip-content img.drip-image {
+      margin-right: 20px;
+      width: 100px;
+    }
+
+    .drip-tab.image-right .drip-content img.drip-image {
+      margin-left: 20px;
+      width: 100px;
+    }
+  }
+
+  .drip-tab .drip-content a.drip-close {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: -1px 0 0 0;
+    float: right;
+    font-size: 28px;
+    line-height: 15px;
+    font-weight: normal;
+    color: #333;
+    opacity: 0.4;
+  }
+
+  .drip-tab .drip-content a.drip-close:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  /* === Content Subscribe Form === */
+
+  .drip-tab form {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .drip-tab dl {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .drip-tab dl dt {
+    display: block;
+    padding: 0 0 5px 0;
+    font-weight: bold;
+  }
+
+  .drip-tab dl.no-labels dt {
+    display: none;
+  }
+
+  .drip-tab dl dd {
+    display: block;
+    padding: 0 0 10px 0;
+  }
+
+  .drip-tab .drip-text-field {
+    margin: 0 !important;
+    padding: 6px !important;
+    height: auto !important;
+    width: 100% !important;
+    color: #333 !important;
+    background-color: #fff !important;
+    border: 1px solid #c4c4c4 !important;
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.18) !important;
+       -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.18) !important;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.18) !important;
+    -webkit-border-radius: 4px !important;
+       -moz-border-radius: 4px !important;
+            border-radius: 4px !important;
+    -webkit-box-sizing: border-box !important;
+       -moz-box-sizing: border-box !important;
+        -ms-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+    background-image: none !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+
+  .drip-tab .drip-text-field::-webkit-input-placeholder { /* WebKit browsers */
+    color: #999999 !important;
+  }
+  .drip-tab .drip-text-field:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #999999 !important;
+  }
+  .drip-tab .drip-text-field::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #999999 !important;
+  }
+  .drip-tab .drip-text-field:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #999999 !important;
+  }
+
+  .drip-tab .drip-text-field:focus {
+    border-color: #a4a4a4 !important;
+    outline: 0;
+    background-image: none;
+    background-color: #fff !important;
+  }
+
+  .drip-tab.mobile .drip-text-field {
+    font-size: 16px;
+  }
+
+  .drip-tab .drip-errors {
+    padding: 5px 0 0 0;
+    font-weight: normal;
+    color: red;
+  }
+
+  .drip-tab .drip-submit-button {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    padding: 3px 12px !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    line-height: 1.6 !important;
+    border: 0 !important;
+    -webkit-border-radius: 15px !important;
+       -moz-border-radius: 15px !important;
+            border-radius: 15px !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto;
+  }
+
+  .drip-tab .drip-submit-button:hover {
+    background-image: none !important;
+  }
+
+  .drip-tab .drip-submit-button:active {
+    background-image: none !important;
+  }
+
+  /* checkbox */
+  .drip-tab .classic--checkbox.hidden {
+    margin-bottom: -8px;
+    display: none;
+  }
+
+  .drip-tab .classic--checkbox input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+  }
+
+  /* stylelint-enable */
+
+</style></head>
+<body class="post-template-default single single-post postid-5233 single-format-standard safari alt-style-default two-col-left width-960 two-col-left-960">
+<div id="wrapper">
+
+	<div id="inner-wrapper">
+
+	<h3 class="nav-toggle icon"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#navigation">Navigation</a></h3>
+
+	<header id="header" class="col-full">
+
+		<div id="logo">
+<a href="https://machinelearningmastery.com/" title="Making developers awesome at machine learning"><img src="./A Gentle Introduction to Statistical Hypothesis Testing_files/Header_smaller_text_better-1.png" alt="Machine Learning Mastery"></a>
+<span class="site-title"><a href="https://machinelearningmastery.com/">Machine Learning Mastery</a></span>
+<span class="site-description">Making developers awesome at machine learning</span>
+</div>
+	    <div class="header-widget">
+	        <div id="custom_html-43" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div style="text-align: right;">
+<a href="https://machinelearningmastery.lpages.co/smfml-mini-course/">Click to Take the FREE Statistics Crash-Course</a>
+</div></div></div><div id="search-4" class="widget widget_search"><div class="search_main">
+    <form method="get" class="searchform" action="https://machinelearningmastery.com/">
+        <input type="text" class="field s" name="s" value="Search..." onfocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
+		<input type="hidden" name="post_type" value="post">
+        <button type="submit" class="fa fa-search submit" name="submit" value="Search"></button>
+    </form>
+    <div class="fix"></div>
+</div></div>	    </div>
+	
+	</header>
+	<nav id="navigation" class="col-full" role="navigation">
+
+	
+	<section class="menus">
+
+		<a href="https://machinelearningmastery.com/" class="nav-home"><span>Home</span></a>
+
+	<h3>Main Menu</h3><ul id="main-nav" class="nav fl"><li id="menu-item-6503" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6503"><a href="https://machinelearningmastery.com/start-here/">Get Started</a></li>
+<li id="menu-item-6501" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-6501"><a href="https://machinelearningmastery.com/blog/">Blog</a></li>
+<li id="menu-item-6506" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6506 parent"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#">Topics</a>
+<ul class="sub-menu">
+	<li id="menu-item-6508" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6508"><a href="https://machinelearningmastery.com/category/deep-learning/">Deep Learning (keras)</a></li>
+	<li id="menu-item-7921" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7921"><a href="https://machinelearningmastery.com/category/deep-learning-for-computer-vision/">Computer Vision</a></li>
+	<li id="menu-item-6509" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6509"><a href="https://machinelearningmastery.com/category/deep-learning-time-series/">Deep Learning for Time Series</a></li>
+	<li id="menu-item-6515" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6515"><a href="https://machinelearningmastery.com/category/natural-language-processing/">NLP (Text)</a></li>
+	<li id="menu-item-8576" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8576"><a href="https://machinelearningmastery.com/category/generative-adversarial-networks/">GANs</a></li>
+	<li id="menu-item-6511" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6511"><a href="https://machinelearningmastery.com/category/lstm/">LSTMs</a></li>
+	<li id="menu-item-7106" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7106"><a href="https://machinelearningmastery.com/category/better-deep-learning/">Deep Learning Performance</a></li>
+	<li id="menu-item-6512" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6512"><a href="https://machinelearningmastery.com/category/machine-learning-algorithms/">Intro to Algorithms</a></li>
+	<li id="menu-item-6507" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6507"><a href="https://machinelearningmastery.com/category/algorithms-from-scratch/">Code Algorithms</a></li>
+	<li id="menu-item-6520" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6520"><a href="https://machinelearningmastery.com/category/time-series/">Intro to Time Series</a></li>
+	<li id="menu-item-6516" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6516"><a href="https://machinelearningmastery.com/category/python-machine-learning/">Python (scikit-learn)</a></li>
+	<li id="menu-item-9966" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9966"><a href="https://machinelearningmastery.com/category/imbalanced-classification/">Imbalanced Classification</a></li>
+	<li id="menu-item-10674" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10674"><a href="https://machinelearningmastery.com/category/data-preparation/">Data Preparation</a></li>
+	<li id="menu-item-6517" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6517"><a href="https://machinelearningmastery.com/category/r-machine-learning/">R (caret)</a></li>
+	<li id="menu-item-6522" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6522"><a href="https://machinelearningmastery.com/category/weka-machine-learning/">Weka (no code)</a></li>
+	<li id="menu-item-6510" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6510"><a href="https://machinelearningmastery.com/category/linear-algebra/">Linear Algebra</a></li>
+	<li id="menu-item-6519" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-6519"><a href="https://machinelearningmastery.com/category/statistical-methods/">Statistics</a></li>
+	<li id="menu-item-8989" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8989"><a href="https://machinelearningmastery.com/category/probability/">Probability</a></li>
+	<li id="menu-item-6523" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6523"><a href="https://machinelearningmastery.com/category/xgboost/">XGBoost</a></li>
+</ul>
+</li>
+<li id="menu-item-6502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6502"><a href="https://machinelearningmastery.com/products/">EBooks</a></li>
+<li id="menu-item-6500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6500"><a href="https://machinelearningmastery.com/faq/">FAQ</a></li>
+<li id="menu-item-6504" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6504"><a href="https://machinelearningmastery.com/about/">About</a></li>
+<li id="menu-item-6505" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6505"><a href="https://machinelearningmastery.com/contact/">Contact</a></li>
+</ul>	<div class="side-nav">
+		</div><!-- /#side-nav -->
+
+	</section><!-- /.menus -->
+
+	<a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#top" class="nav-close"><span>Return to Content</span></a>
+
+</nav>
+       
+    <!-- #content Starts -->
+	    <div id="content" class="col-full">
+    
+    	<div id="main-sidebar-container">    
+
+            <!-- #main Starts -->
+                        <section id="main">                       
+<article class="post-5233 post type-post status-publish format-standard has-post-thumbnail hentry category-statistical-methods">
+	<header>
+	<h1 class="title entry-title">A Gentle Introduction to Statistical Hypothesis Testing</h1>	</header>
+<div class="post-meta"><span class="small">By</span> <span class="author vcard"><span class="fn"><a href="https://machinelearningmastery.com/author/jasonb/" title="Posts by Jason Brownlee" rel="author">Jason Brownlee</a></span></span> <span class="small">on</span> <abbr class="date time published updated" title="2018-05-14T05:00:57+1000">May 14, 2018</abbr>  <span class="small">in</span> <span class="categories"><a href="https://machinelearningmastery.com/category/statistical-methods/" title="View all items in Statistics">Statistics</a></span>  </div>
+	<section class="entry">
+<div class="simplesocialbuttons simplesocial-simple-icons simplesocialbuttons_inline simplesocialbuttons-align-left post-5233 post  simplesocialbuttons-inline-no-animation simplesocialbuttons-inline-in">
+<button class="ssb_tweet-icon" data-href="https://twitter.com/share?text=A+Gentle+Introduction+to+Statistical+Hypothesis+Testing&amp;url=https://machinelearningmastery.com/statistical-hypothesis-tests/" rel="nofollow" onclick="javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><path fill="none" d="M0 0h72v72H0z"></path><path class="icon" fill="#fff" d="M68.812 15.14c-2.348 1.04-4.87 1.744-7.52 2.06 2.704-1.62 4.78-4.186 5.757-7.243-2.53 1.5-5.33 2.592-8.314 3.176C56.35 10.59 52.948 9 49.182 9c-7.23 0-13.092 5.86-13.092 13.093 0 1.026.118 2.02.338 2.98C25.543 24.527 15.9 19.318 9.44 11.396c-1.125 1.936-1.77 4.184-1.77 6.58 0 4.543 2.312 8.552 5.824 10.9-2.146-.07-4.165-.658-5.93-1.64-.002.056-.002.11-.002.163 0 6.345 4.513 11.638 10.504 12.84-1.1.298-2.256.457-3.45.457-.845 0-1.666-.078-2.464-.23 1.667 5.2 6.5 8.985 12.23 9.09-4.482 3.51-10.13 5.605-16.26 5.605-1.055 0-2.096-.06-3.122-.184 5.794 3.717 12.676 5.882 20.067 5.882 24.083 0 37.25-19.95 37.25-37.25 0-.565-.013-1.133-.038-1.693 2.558-1.847 4.778-4.15 6.532-6.774z"></path></svg></span><i class="simplesocialtxt">Tweet </i></button>
+		<button class="ssb_fbshare-icon" target="_blank" data-href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmastery.com/statistical-hypothesis-tests/" onclick="javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="_1pbq" color="#ffffff"><path fill="#ffffff" fill-rule="evenodd" class="icon" d="M8 14H3.667C2.733 13.9 2 13.167 2 12.233V3.667A1.65 1.65 0 0 1 3.667 2h8.666A1.65 1.65 0 0 1 14 3.667v8.566c0 .934-.733 1.667-1.667 1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033 0-.933-.266-1.533-.266-1.267 0-2.434.7-2.467 2.133v1.867H6v2.066h2V14z"></path></svg></span>
+						<span class="simplesocialtxt">Share </span> </button>
+<button class="ssb_linkedin-icon" data-href="https://www.linkedin.com/cws/share?url=https://machinelearningmastery.com/statistical-hypothesis-tests/" onclick="javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="14.1px" viewBox="-301.4 387.5 15 14.1" enable-background="new -301.4 387.5 15 14.1" xml:space="preserve"> <g id="XMLID_398_"> <path id="XMLID_399_" fill="#FFFFFF" d="M-296.2,401.6c0-3.2,0-6.3,0-9.5h0.1c1,0,2,0,2.9,0c0.1,0,0.1,0,0.1,0.1c0,0.4,0,0.8,0,1.2 c0.1-0.1,0.2-0.3,0.3-0.4c0.5-0.7,1.2-1,2.1-1.1c0.8-0.1,1.5,0,2.2,0.3c0.7,0.4,1.2,0.8,1.5,1.4c0.4,0.8,0.6,1.7,0.6,2.5 c0,1.8,0,3.6,0,5.4v0.1c-1.1,0-2.1,0-3.2,0c0-0.1,0-0.1,0-0.2c0-1.6,0-3.2,0-4.8c0-0.4,0-0.8-0.2-1.2c-0.2-0.7-0.8-1-1.6-1 c-0.8,0.1-1.3,0.5-1.6,1.2c-0.1,0.2-0.1,0.5-0.1,0.8c0,1.7,0,3.4,0,5.1c0,0.2,0,0.2-0.2,0.2c-1,0-1.9,0-2.9,0 C-296.1,401.6-296.2,401.6-296.2,401.6z"></path> <path id="XMLID_400_" fill="#FFFFFF" d="M-298,401.6L-298,401.6c-1.1,0-2.1,0-3,0c-0.1,0-0.1,0-0.1-0.1c0-3.1,0-6.1,0-9.2 c0-0.1,0-0.1,0.1-0.1c1,0,2,0,2.9,0h0.1C-298,395.3-298,398.5-298,401.6z"></path> <path id="XMLID_401_" fill="#FFFFFF" d="M-299.6,390.9c-0.7-0.1-1.2-0.3-1.6-0.8c-0.5-0.8-0.2-2.1,1-2.4c0.6-0.2,1.2-0.1,1.8,0.2 c0.5,0.4,0.7,0.9,0.6,1.5c-0.1,0.7-0.5,1.1-1.1,1.3C-299.1,390.8-299.4,390.8-299.6,390.9L-299.6,390.9z"></path> </g> </svg> </span>
+						<span class="simplesocialtxt">Share</span> </button>
+</div>
+<p class="post-last-modified"><span class="post-last-modified-text">Last Updated on</span> <time class="post-last-modified-td">April 10, 2020</time></p><p>Data must be interpreted in order to add meaning.</p>
+<p>We can interpret data by assuming a specific structure our outcome and use statistical methods to confirm or reject the assumption. The assumption is called a hypothesis and the statistical tests used for this purpose are called statistical hypothesis tests.</p>
+<p>Whenever we want to make claims about the distribution of data or whether one set of results are different from another set of results in applied machine learning, we must rely on statistical hypothesis tests.</p>
+<p>In this tutorial, you will discover statistical hypothesis testing and how to interpret and carefully state the results from statistical tests.</p>
+<p>After completing this tutorial, you will know:</p>
+<ul>
+<li>Statistical hypothesis tests are important for quantifying answers to questions about samples of data.</li>
+<li>The interpretation of a statistical hypothesis test requires a correct understanding of p-values and critical values.</li>
+<li>Regardless of the significance level, the finding of hypothesis tests may still contain errors.</li>
+</ul>
+<p>Discover statistical hypothesis testing, resampling methods, estimation statistics and nonparametric methods <a href="https://machinelearningmastery.com/statistics_for_machine_learning/" rel="nofollow">in my new book</a>, with 29 step-by-step tutorials and full source code.</p>
+<p>Let’s get started.</p>
+<ul>
+<li><strong>Update May/2018</strong>: Added note about “reject” vs “failure to reject”, improved language on this issue.</li>
+<li><strong>Update Jun/2018</strong>: Fixed typo in the explanation of type I and type II errors.</li>
+<li><strong>Update Jun/2019</strong>: Added examples of tests and links to Python tutorials.</li>
+</ul>
+<div id="attachment_5242" style="width: 650px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-5242" class="size-full wp-image-5242" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/A-Gentle-Introduction-to-Statistical-Hypothesis-Tests.jpg" alt="A Gentle Introduction to Statistical Hypothesis Tests" width="640" height="426" srcset="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/A-Gentle-Introduction-to-Statistical-Hypothesis-Tests.jpg 640w, https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/A-Gentle-Introduction-to-Statistical-Hypothesis-Tests-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px"><p id="caption-attachment-5242" class="wp-caption-text">A Gentle Introduction to Statistical Hypothesis Tests<br>Photo by <a href="https://www.flickr.com/photos/kevinverbeem/33597498581/">Kevin Verbeem</a>, some rights reserved.</p></div>
+<h2>Tutorial Overview</h2>
+<p>This tutorial is divided into five parts; they are:</p>
+<ol>
+<li>Statistical Hypothesis Testing</li>
+<li>Statistical Test Interpretation</li>
+<li>Errors in Statistical Tests</li>
+<li>Examples of Hypothesis Tests</li>
+<li>Python Tutorials</li>
+</ol>
+<p></p><div class="woo-sc-hr"></div><p></p>
+<center>
+<h3>Need help with Statistics for Machine Learning?</h3>
+<p>Take my free 7-day email crash course now (with sample code).</p>
+<p>Click to sign-up and also get a free PDF Ebook version of the course.</p>
+<p><a href="https://machinelearningmastery.lpages.co/leadbox/142f75173f72a2%3A164f8be4f346dc/5750943224168448/" target="_blank" style="background: rgb(255, 206, 10); color: rgb(255, 255, 255); text-decoration: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 16px; line-height: 20px; padding: 10px; display: inline-block; max-width: 300px; border-radius: 5px; text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 1px; box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 3px inset, rgba(0, 0, 0, 0.5) 0px 1px 3px;" rel="noopener noreferrer" data-leadbox="https://machinelearningmastery.lpages.co/leadbox/142f75173f72a2%3A164f8be4f346dc/5750943224168448/" data-leadbox-id="142f75173f72a2:164f8be4f346dc">Download Your FREE Mini-Course</a><script data-leadbox="142f75173f72a2:164f8be4f346dc" data-url="https://machinelearningmastery.lpages.co/leadbox/142f75173f72a2%3A164f8be4f346dc/5750943224168448/" data-config="%7B%7D" type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/leadbox-1526328103.js.download"></script></p>
+</center>
+<p></p><div class="woo-sc-hr"></div><p></p>
+<h2>Statistical Hypothesis Testing</h2>
+<p>Data alone is not interesting. It is the interpretation of the data that we are really interested in.</p>
+<p>In statistics, when we wish to start asking questions about the data and interpret the results, we use statistical methods that provide a confidence or likelihood about the answers. In general, this class of methods is called <a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing">statistical hypothesis testing</a>, or significance tests.</p>
+<p>The term “<a href="https://machinelearningmastery.com/what-is-a-hypothesis-in-machine-learning/"><em>hypothesis</em></a>” may make you think about science, where we investigate a hypothesis. This is along the right track.</p>
+<p>In statistics, a hypothesis test calculates some quantity under a given assumption. The result of the test allows us to interpret whether the assumption holds or whether the assumption has been violated.</p>
+<p>Two concrete examples that we will use a lot in machine learning are:</p>
+<ul>
+<li>A test that assumes that data has a normal distribution.</li>
+<li>A test that assumes that two samples were drawn from the same underlying population distribution.</li>
+</ul>
+<p>The assumption of a statistical test is called the null hypothesis, or hypothesis 0 (H0 for short). It is often called the default assumption, or the assumption that nothing has changed.</p>
+<p>A violation of the test’s assumption is often called the first hypothesis, hypothesis 1 or H1 for short. H1 is really a short hand for “<em>some other hypothesis</em>,” as all we know is that the evidence suggests that the H0 can be rejected.</p>
+<ul>
+<li><strong>Hypothesis 0 (H0)</strong>: Assumption of the test holds and is failed to be rejected at some level of significance.</li>
+<li><strong>Hypothesis 1 (H1)</strong>: Assumption of the test does not hold and is rejected at some level of significance.</li>
+</ul>
+<p>Before we can reject or fail to reject the null hypothesis, we must interpret the result of the test.</p>
+<h2>Statistical Test Interpretation</h2>
+<p>The results of a statistical hypothesis test must be interpreted for us to start making claims.</p>
+<p>This is a point that may cause a lot of confusion for beginners and experienced practitioners alike.</p>
+<p>There are two common forms that a result from a statistical hypothesis test may take, and they must be interpreted in different ways. They are the p-value and <a href="https://machinelearningmastery.com/critical-values-for-statistical-hypothesis-testing/">critical values</a>.</p>
+<h3>Interpret the p-value</h3>
+<p>We describe a finding as statistically significant by interpreting the p-value.</p>
+<p>For example, we may perform a normality test on a data sample and find that it is unlikely that sample of data deviates from a Gaussian distribution, failing to reject the null hypothesis.</p>
+<p>A statistical hypothesis test may return a value called p or the <a href="https://en.wikipedia.org/wiki/P-value">p-value</a>. This is a quantity that we can use to interpret or quantify the result of the test and either reject or fail to reject the null hypothesis. This is done by comparing the p-value to a threshold value chosen beforehand called the significance level.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Statistical_significance">significance level</a> is often referred to by the Greek lower case letter alpha.</p>
+<p>A common value used for alpha is 5% or 0.05. A smaller alpha value suggests a more robust interpretation of the null hypothesis, such as 1% or 0.1%.</p>
+<p>The p-value is compared to the pre-chosen alpha value. A result is statistically significant when the p-value is less than alpha. This signifies a change was detected: that the default hypothesis can be rejected.</p>
+<ul>
+<li><strong>If p-value &gt; alpha</strong>: Fail to reject the null hypothesis (i.e. not significant result).</li>
+<li><strong>If p-value &lt;= alpha</strong>: Reject the null hypothesis (i.e. significant result).</li>
+</ul>
+<p>For example, if we were performing a test of whether a data sample was normal and we calculated a p-value of .07, we could state something like:</p>
+<blockquote><p>The test found that the data sample was normal, failing to reject the null hypothesis at a 5% significance level.</p></blockquote>
+<p>The significance level can be inverted by subtracting it from 1 to give a confidence level of the hypothesis given the observed sample data.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5ec9d553f21c5339378176" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">confidence level = 1 - significance level</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ec9d553f21c5339378176-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ec9d553f21c5339378176-1">confidence level = 1 - significance level</div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>Therefore, statements such as the following can also be made:</p>
+<blockquote><p>The test found that the data was normal, failing to reject the null hypothesis at a 95% confidence level.</p></blockquote>
+<h3>“Reject” vs “Failure to Reject”</h3>
+<p>The p-value is probabilistic.</p>
+<p>This means that when we interpret the result of a statistical test, we do not know what is true or false, only what is likely.</p>
+<p>Rejecting the null hypothesis means that there is sufficient statistical evidence that the null hypothesis does not look likely. Otherwise, it means that there is not sufficient statistical evidence to reject the null hypothesis.</p>
+<p>We may think about the statistical test in terms of the dichotomy of rejecting and accepting the null hypothesis. The danger is that if we say that we “<em>accept</em>” the null hypothesis, the language suggests that the null hypothesis is true. Instead, it is safer to say that we “<em>fail to reject</em>” the null hypothesis, as in, there is insufficient statistical evidence to reject it.</p>
+<p>When reading “<em>reject</em>” vs “<em>fail to reject</em>” for the first time, it is confusing to beginners. You can think of it as “<em>reject</em>” vs “<em>accept</em>” in your mind, as long as you remind yourself that the result is probabilistic and that even an “<em>accepted</em>” null hypothesis still has a small probability of being wrong.</p>
+<h3>Common p-value Misinterpretations</h3>
+<p>This section highlights some <a href="https://en.wikipedia.org/wiki/Misunderstandings_of_p-values">common misinterpretations of the p-value</a> in the results of statistical tests.</p>
+<h4>True or False Null Hypothesis</h4>
+<p>The interpretation of the p-value does not mean that the null hypothesis is true or false.</p>
+<p>It does mean that we have chosen to reject or fail to reject the null hypothesis at a specific statistical significance level based on empirical evidence and the chosen statistical test.</p>
+<p>You are limited to making probabilistic claims, not crisp binary or true/false claims about the result.</p>
+<h4>p-value as Probability</h4>
+<p>A common misunderstanding is that the p-value is a probability of the null hypothesis being true or false given the data.</p>
+<p>In probability, this would be written as follows:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5ec9d553f21cb013233314" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">Pr(hypothesis | data)</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ec9d553f21cb013233314-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ec9d553f21cb013233314-1">Pr(hypothesis | data)</div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0000 seconds] -->
+<p>This is incorrect.</p>
+<p>Instead, the p-value can be thought of as the probability of the data given the pre-specified assumption embedded in the statistical test.</p>
+<p>Again, using probability notation, this would be written as:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5ec9d553f21cd358818600" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">Pr(data | hypothesis)</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5ec9d553f21cd358818600-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5ec9d553f21cd358818600-1">Pr(data | hypothesis)</div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0000 seconds] -->
+<p>It allows us to reason about whether or not the data fits the hypothesis. Not the other way around.</p>
+<p>The p-value is a measure of how likely the data sample would be observed if the null hypothesis were true.</p>
+<h4>Post-Hoc Tuning</h4>
+<p>It does not mean that you can re-sample your domain or tune your data sample and re-run the statistical test until you achieve a desired result.</p>
+<p>It also does not mean that you can choose your p-value after you run the test.</p>
+<p>This is called p-hacking or hill climbing and will mean that the result you present will be fragile and not representative. In science, this is at best unethical, and at worst fraud.</p>
+<h3>Interpret Critical Values</h3>
+<p>Some tests do not return a p-value.</p>
+<p>Instead, they might return a list of <a href="https://en.wikipedia.org/wiki/Critical_value">critical values</a> and their associated significance levels, as well as a test statistic.</p>
+<p>These are usually nonparametric or distribution-free statistical hypothesis tests.</p>
+<p>The choice of returning a p-value or a list of critical values is really an implementation choice.</p>
+<p>The results are interpreted in a similar way. Instead of comparing a single p-value to a pre-specified significance level, the test statistic is compared to the critical value at a chosen significance level.</p>
+<ul>
+<li><strong>If test statistic &lt; critical value</strong>: Fail to reject the null hypothesis.</li>
+<li><strong>If test statistic &gt;= critical value</strong>: Reject the null hypothesis.</li>
+</ul>
+<p>Again, the meaning of the result is similar in that the chosen significance level is a probabilistic decision on rejection or fail to reject the base assumption of the test given the data.</p>
+<p>Results are presented in the same way as with a p-value, as either significance level or confidence level. For example, if a normality test was calculated and the test statistic was compared to the critical value at the 5% significance level, results could be stated as:</p>
+<blockquote><p>The test found that the data sample was normal, failing to reject the null hypothesis at a 5% significance level.</p></blockquote>
+<p>Or:</p>
+<blockquote><p>The test found that the data was normal, failing to reject the null hypothesis at a 95% confidence level.</p></blockquote>
+<h2>Errors in Statistical Tests</h2>
+<p>The interpretation of a statistical hypothesis test is probabilistic.</p>
+<p>That means that the evidence of the test may suggest an outcome and be mistaken.</p>
+<p>For example, if alpha was 5%, it suggests that (at most) 1 time in 20 that the null hypothesis would be mistakenly rejected or failed to be rejected because of the statistical noise in the data sample.</p>
+<p>Given a small p-value (reject the null hypothesis) either means that the null hypothesis false (we got it right) or it is true and some rare and unlikely event has been observed (we made a mistake). If this type of error is made, it is called a <strong>false positive</strong>. We falsely believe the rejection of the null hypothesis.</p>
+<p>Alternately, given a large p-value (fail to reject the null hypothesis), it may mean that the null hypothesis is true (we got it right) or that the null hypothesis is false and some unlikely event occurred (we made a mistake). If this type of error is made, it is called a <strong>false negative</strong>. We falsely believe the null hypothesis or assumption of the statistical test.</p>
+<p>Each of these two types of error has a specific name.</p>
+<ul>
+<li><strong>Type I Error</strong>: The incorrect rejection of a true null hypothesis or a false positive.</li>
+<li><strong>Type II Error</strong>: The incorrect failure of rejection of a false null hypothesis or a false negative.</li>
+</ul>
+<p>All statistical hypothesis tests have a chance of making either of these types of errors. False findings or false disoveries are more than possible; they are probable.</p>
+<p>Ideally, we want to choose a significance level that minimizes the likelihood of one of these errors. E.g. a very small significance level. Although significance levels such as 0.05 and 0.01 are common in many fields of science, harder sciences, <a href="http://www.physics.org/article-questions.asp?id=103">such as physics</a>, are more aggressive.</p>
+<p>It is common to use a significance level of 3 * 10^-7 or 0.0000003, often referred to as 5-sigma. This means that the finding was due to chance with a probability of 1 in 3.5 million independent repeats of the experiments. To use a threshold like this may require a much large data sample.</p>
+<p>Nevertheless, these types of errors are always present and must be kept in mind when presenting and interpreting the results of statistical tests. It is also a reason why it is important to have findings independently verified.</p>
+<h2>Examples of Hypothesis Tests</h2>
+<p>There are many types of statistical hypothesis tests.</p>
+<p>This section lists some common examples of statistical hypothesis tests and the types of problems that they are used to address:</p>
+<h3>Variable Distribution Type Tests (Gaussian)</h3>
+<ul>
+<li>Shapiro-Wilk Test</li>
+<li>D’Agostino’s K^2 Test</li>
+<li>Anderson-Darling Test</li>
+</ul>
+<h3>Variable Relationship Tests (correlation)</h3>
+<ul>
+<li>Pearson’s Correlation Coefficient</li>
+<li>Spearman’s Rank Correlation</li>
+<li>Kendall’s Rank Correlation</li>
+<li>Chi-Squared Test</li>
+</ul>
+<h3>Compare Sample Means (parametric)</h3>
+<ul>
+<li>Student’s t-test</li>
+<li>Paired Student’s t-test</li>
+<li>Analysis of Variance Test (ANOVA)</li>
+<li>Repeated Measures ANOVA Test</li>
+</ul>
+<h3>Compare Sample Means (nonparametric)</h3>
+<ul>
+<li>Mann-Whitney U Test</li>
+<li>Wilcoxon Signed-Rank Test</li>
+<li>Kruskal-Wallis H Test</li>
+<li>Friedman Test</li>
+</ul>
+<p>For example Python code on how to use each of these tests, see the next section.</p>
+<h2>Python Tutorials</h2>
+<p>This section provides links to Python tutorials on statistical hypothesis testing:</p>
+<p>Examples of many tests:</p>
+<ul>
+<li><a href="https://machinelearningmastery.com/statistical-hypothesis-tests-in-python-cheat-sheet/">15 Statistical Hypothesis Tests in Python (Cheat Sheet)</a></li>
+</ul>
+<p>Variable distribution tests:</p>
+<ul>
+<li><a href="https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/">A Gentle Introduction to Normality Tests in Python</a></li>
+</ul>
+<p>Evaluating variable relationships:</p>
+<ul>
+<li><a href="https://machinelearningmastery.com/how-to-use-correlation-to-understand-the-relationship-between-variables/">How to Calculate Correlation Between Variables in Python</a></li>
+<li><a href="https://machinelearningmastery.com/how-to-calculate-nonparametric-rank-correlation-in-python/">How to Calculate Nonparametric Rank Correlation in Python</a></li>
+</ul>
+<p>Comparing sample means:</p>
+<ul>
+<li><a href="https://machinelearningmastery.com/parametric-statistical-significance-tests-in-python/">How to Calculate Parametric Statistical Hypothesis Tests in Python</a></li>
+<li><a href="https://machinelearningmastery.com/nonparametric-statistical-significance-tests-in-python/">How to Calculate Nonparametric Statistical Hypothesis Tests in Python</a></li>
+</ul>
+<h2>Extensions</h2>
+<p>This section lists some ideas for extending the tutorial that you may wish to explore.</p>
+<ul>
+<li>Find an example of a research paper that does not present results using p-values.</li>
+<li>Find an example of a research paper that presents results with statistical significance, but makes one of the common misinterpretations of p-values.</li>
+<li>Find an example of a research paper that presents results with statistical significance and correctly interprets and presents the p-value and findings.</li>
+</ul>
+<p>If you explore any of these extensions, I’d love to know.</p>
+<h2>Further Reading</h2>
+<p>This section provides more resources on the topic if you are looking to go deeper.</p>
+<h3>Articles</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing">Statistical hypothesis testing on Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Statistical_significance">Statistical significance on Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/P-value">p-value on Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Critical_value">Critical value on Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors">Type I and type II errors on Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Data_dredging">Data dredging on Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Misunderstandings_of_p-values">Misunderstandings of p-values on Wikipedia</a></li>
+<li><a href="http://www.physics.org/article-questions.asp?id=103">What does the 5 sigma mean?</a></li>
+</ul>
+<h2>Summary</h2>
+<p>In this tutorial, you discovered statistical hypothesis testing and how to interpret and carefully state the results from statistical tests.</p>
+<p>Specifically, you learned:</p>
+<ul>
+<li>Statistical hypothesis tests are important for quantifying answers to questions about samples of data.</li>
+<li>The interpretation of a statistical hypothesis test requires a correct understanding of p-values.</li>
+<li>Regardless of the significance level, the finding of hypothesis tests may still contain errors.</li>
+</ul>
+<p>Do you have any questions?<br>
+Ask your questions in the comments below and I will do my best to answer.</p>
+<div class="widget_text awac-wrapper"><div class="widget_text awac widget custom_html-68"><div class="textwidget custom-html-widget"><div style="text-align: center;">
+<div class="woo-sc-hr"></div>
+<h2>Get a Handle on Statistics for Machine Learning!</h2>
+<a href="https://machinelearningmastery.com/statistics_for_machine_learning/" rel="nofollow"><img style="border: 0;" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/Cover-220.png" alt="Statistical Methods for Machine Learning" align="left"></a>
+<h4>Develop a working understanding of statistics</h4>
+<p>...by writing lines of code in python</p>
+
+<p>Discover how in my new Ebook:<br>
+	<a href="https://machinelearningmastery.com/statistics_for_machine_learning/" rel="nofollow">Statistical Methods for Machine Learning</a></p>
+
+<p>It provides <strong>self-study tutorials</strong> on topics like:<br>
+<em>Hypothesis Tests, Correlation, Nonparametric Stats, Resampling</em>, and much more...</p>
+
+<h4>Discover how to Transform Data into Knowledge</h4>
+<p>Skip the Academics. Just Results.</p>
+
+<a href="https://machinelearningmastery.com/statistics_for_machine_learning/" class="woo-sc-button  custom" style="background:;border-color:"><span class="woo-">See What's Inside</span></a>
+<div class="woo-sc-hr"></div>
+</div></div></div></div><div class="simplesocialbuttons simplesocial-simple-icons simplesocialbuttons_inline simplesocialbuttons-align-left post-5233 post  simplesocialbuttons-inline-no-animation simplesocialbuttons-inline-in">
+<button class="ssb_tweet-icon" data-href="https://twitter.com/share?text=A+Gentle+Introduction+to+Statistical+Hypothesis+Testing&amp;url=https://machinelearningmastery.com/statistical-hypothesis-tests/" rel="nofollow" onclick="javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><path fill="none" d="M0 0h72v72H0z"></path><path class="icon" fill="#fff" d="M68.812 15.14c-2.348 1.04-4.87 1.744-7.52 2.06 2.704-1.62 4.78-4.186 5.757-7.243-2.53 1.5-5.33 2.592-8.314 3.176C56.35 10.59 52.948 9 49.182 9c-7.23 0-13.092 5.86-13.092 13.093 0 1.026.118 2.02.338 2.98C25.543 24.527 15.9 19.318 9.44 11.396c-1.125 1.936-1.77 4.184-1.77 6.58 0 4.543 2.312 8.552 5.824 10.9-2.146-.07-4.165-.658-5.93-1.64-.002.056-.002.11-.002.163 0 6.345 4.513 11.638 10.504 12.84-1.1.298-2.256.457-3.45.457-.845 0-1.666-.078-2.464-.23 1.667 5.2 6.5 8.985 12.23 9.09-4.482 3.51-10.13 5.605-16.26 5.605-1.055 0-2.096-.06-3.122-.184 5.794 3.717 12.676 5.882 20.067 5.882 24.083 0 37.25-19.95 37.25-37.25 0-.565-.013-1.133-.038-1.693 2.558-1.847 4.778-4.15 6.532-6.774z"></path></svg></span><i class="simplesocialtxt">Tweet </i></button>
+		<button class="ssb_fbshare-icon" target="_blank" data-href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmastery.com/statistical-hypothesis-tests/" onclick="javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="_1pbq" color="#ffffff"><path fill="#ffffff" fill-rule="evenodd" class="icon" d="M8 14H3.667C2.733 13.9 2 13.167 2 12.233V3.667A1.65 1.65 0 0 1 3.667 2h8.666A1.65 1.65 0 0 1 14 3.667v8.566c0 .934-.733 1.667-1.667 1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033 0-.933-.266-1.533-.266-1.267 0-2.434.7-2.467 2.133v1.867H6v2.066h2V14z"></path></svg></span>
+						<span class="simplesocialtxt">Share </span> </button>
+<button class="ssb_linkedin-icon" data-href="https://www.linkedin.com/cws/share?url=https://machinelearningmastery.com/statistical-hypothesis-tests/" onclick="javascript:window.open(this.dataset.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600&#39;);return false;">
+						<span class="icon"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="14.1px" viewBox="-301.4 387.5 15 14.1" enable-background="new -301.4 387.5 15 14.1" xml:space="preserve"> <g id="XMLID_398_"> <path id="XMLID_399_" fill="#FFFFFF" d="M-296.2,401.6c0-3.2,0-6.3,0-9.5h0.1c1,0,2,0,2.9,0c0.1,0,0.1,0,0.1,0.1c0,0.4,0,0.8,0,1.2 c0.1-0.1,0.2-0.3,0.3-0.4c0.5-0.7,1.2-1,2.1-1.1c0.8-0.1,1.5,0,2.2,0.3c0.7,0.4,1.2,0.8,1.5,1.4c0.4,0.8,0.6,1.7,0.6,2.5 c0,1.8,0,3.6,0,5.4v0.1c-1.1,0-2.1,0-3.2,0c0-0.1,0-0.1,0-0.2c0-1.6,0-3.2,0-4.8c0-0.4,0-0.8-0.2-1.2c-0.2-0.7-0.8-1-1.6-1 c-0.8,0.1-1.3,0.5-1.6,1.2c-0.1,0.2-0.1,0.5-0.1,0.8c0,1.7,0,3.4,0,5.1c0,0.2,0,0.2-0.2,0.2c-1,0-1.9,0-2.9,0 C-296.1,401.6-296.2,401.6-296.2,401.6z"></path> <path id="XMLID_400_" fill="#FFFFFF" d="M-298,401.6L-298,401.6c-1.1,0-2.1,0-3,0c-0.1,0-0.1,0-0.1-0.1c0-3.1,0-6.1,0-9.2 c0-0.1,0-0.1,0.1-0.1c1,0,2,0,2.9,0h0.1C-298,395.3-298,398.5-298,401.6z"></path> <path id="XMLID_401_" fill="#FFFFFF" d="M-299.6,390.9c-0.7-0.1-1.2-0.3-1.6-0.8c-0.5-0.8-0.2-2.1,1-2.4c0.6-0.2,1.2-0.1,1.8,0.2 c0.5,0.4,0.7,0.9,0.6,1.5c-0.1,0.7-0.5,1.1-1.1,1.3C-299.1,390.8-299.4,390.8-299.6,390.9L-299.6,390.9z"></path> </g> </svg> </span>
+						<span class="simplesocialtxt">Share</span> </button>
+</div>
+	</section><!-- /.entry -->
+	<div class="fix"></div>
+<aside id="post-author">
+	<div class="profile-image"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a.png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80"></div>
+	<div class="profile-content">
+		<h4>About Jason Brownlee</h4>
+		Jason Brownlee, PhD is a machine learning specialist who teaches developers how to get results with modern machine learning methods via hands-on tutorials.				<div class="profile-link">
+			<a href="https://machinelearningmastery.com/author/jasonb/">
+				View all posts by Jason Brownlee <span class="meta-nav">→</span>			</a>
+		</div><!--#profile-link-->
+			</div>
+	<div class="fix"></div>
+</aside>
+<div class="post-utility"></div>
+</article><!-- /.post -->
+	        <div class="post-entries">
+	            <div class="nav-prev fl"><a href="https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/" rel="prev"><i class="fa fa-angle-left"></i> A Gentle Introduction to Normality Tests in Python</a></div>
+	            <div class="nav-next fr"><a href="https://machinelearningmastery.com/nonparametric-statistical-significance-tests-in-python/" rel="next">How to Calculate Nonparametric Statistical Hypothesis Tests in Python <i class="fa fa-angle-right"></i></a></div>
+	            <div class="fix"></div>
+	        </div>
+
+		<div id="comments">		 	<h3 id="comments-title">32 Responses to <em>A Gentle Introduction to Statistical Hypothesis Testing</em></h3>
+		 	<ol class="commentlist">
+				
+		<li id="comment-437480" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-437480" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/c4aa235999239bc89a4510b6f114c422.png" srcset="https://secure.gravatar.com/avatar/c4aa235999239bc89a4510b6f114c422?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">DC</span>
+	                <span class="date">May 14, 2018 at 2:18 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437480" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Can one accept a hypothesis? I thought its just reject or fail to reject.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437480" data-commentid="437480" data-postid="5233" data-belowelement="comment-437480" data-respondelement="respond" aria-label="Reply to DC">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437483" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2 parent">
+
+	      	<div id="li-comment-437483" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 14, 2018 at 2:25 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437483" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Yes, the null hypothesis can be accepted, although it does not mean it is true. </p>
+<p>The use of “fail to reject” instead of “accept” is used to help remind you that we don’t know what is true, we just have evidence of a probabilistic finding.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437483" data-commentid="437483" data-postid="5233" data-belowelement="comment-437483" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437862" class="comment even depth-3 parent">
+
+	      	<div id="li-comment-437862" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/f343750acd1f96953260b47c705582d9.png" srcset="https://secure.gravatar.com/avatar/f343750acd1f96953260b47c705582d9?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Jarad</span>
+	                <span class="date">May 18, 2018 at 1:59 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437862" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>It really depends on who you ask. Some statisticians are extremely strong-minded on this that you never use the word “accept” when concluding an experiment. I think the consensus is from the statistics community is that you never “accept” it.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437862" data-commentid="437862" data-postid="5233" data-belowelement="comment-437862" data-respondelement="respond" aria-label="Reply to Jarad">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437868" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-4">
+
+	      	<div id="li-comment-437868" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 18, 2018 at 2:42 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437868" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Agreed. We do not accept, but fail to reject. </p>
+<p>For beginners, the dichotomy of “reject” vs “fail to reject” is super confusing.</p>
+<p>As long as the beginner acknowledges that the result is probabilistic, that we do not know truth, then then can think “accept”/”reject” in their head and get on with things.</p>
+<p>Note, I updated the post and added a section on this topic to make things clearer. I don’t want a bunch of angry statisticians banging down my door <img draggable="false" role="img" class="emoji" alt="🙂" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/1f642.svg"></p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437868" data-commentid="437868" data-postid="5233" data-belowelement="comment-437868" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-437490" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-437490" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/d80cda2e2659dec2875b84159bc2ecc2.png" srcset="https://secure.gravatar.com/avatar/d80cda2e2659dec2875b84159bc2ecc2?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Yusoof Raheem</span>
+	                <span class="date">May 14, 2018 at 4:20 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437490" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>This is quite elucidatory it is interesting I will like to read more many many thanks</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437490" data-commentid="437490" data-postid="5233" data-belowelement="comment-437490" data-respondelement="respond" aria-label="Reply to Yusoof Raheem">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437526" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-437526" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 15, 2018 at 7:51 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437526" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437526" data-commentid="437526" data-postid="5233" data-belowelement="comment-437526" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-437511" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-437511" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/f26c0f0687a67a4890c0675ab9b24d15.png" srcset="https://secure.gravatar.com/avatar/f26c0f0687a67a4890c0675ab9b24d15?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Emily P.</span>
+	                <span class="date">May 15, 2018 at 2:21 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437511" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hmm, i think that the following phrases should be inverted:</p>
+<p>If p-value &gt; alpha: Accept the null hypothesis.<br>
+If p-value<br>
+If p-value &gt; alpha: Do not accept the null hypothesis (i.e. reject the null hypothesis).<br>
+If p-value &lt; alpha:  Accept the null hypothesis.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437511" data-commentid="437511" data-postid="5233" data-belowelement="comment-437511" data-respondelement="respond" aria-label="Reply to Emily P.">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437535" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-437535" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 15, 2018 at 8:03 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437535" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>I don’t think so. Why do you say that?</p>
+<p>A small p-value (&lt;=0.05) indicates that there is strong evidence to reject the null hypothesis.
+</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437535" data-commentid="437535" data-postid="5233" data-belowelement="comment-437535" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-437516" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-437516" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/6f4cf952c10c6f0035efc3d97e43c759.png" srcset="https://secure.gravatar.com/avatar/6f4cf952c10c6f0035efc3d97e43c759?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Scot</span>
+	                <span class="date">May 15, 2018 at 3:57 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437516" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Another great article Mr. Brownlee. I really like that you mention that the interpretation of the p-value does not mean the null hypothesis is true or false. I believe that often gets forgotten!</p>
+<p>Under the section:<br>
+Interpret the p-value</p>
+<p>I think the following sentence fragment has an extra word</p>
+<p>For example, we may find perform a normality test on a data sample and find that it is unlikely</p>
+<p>I think you want </p>
+<p>For example, we may perform a normality test on a data sample and find that it is unlikely</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437516" data-commentid="437516" data-postid="5233" data-belowelement="comment-437516" data-respondelement="respond" aria-label="Reply to Scot">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437537" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-437537" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 15, 2018 at 8:05 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437537" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks, fixed.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437537" data-commentid="437537" data-postid="5233" data-belowelement="comment-437537" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-437857" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-437857" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/06f6d59d5b36a58ceb368022ef96d1e7.png" srcset="https://secure.gravatar.com/avatar/06f6d59d5b36a58ceb368022ef96d1e7?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">MM</span>
+	                <span class="date">May 18, 2018 at 12:58 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437857" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Can test hypothesis test (p value ) with excel??</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437857" data-commentid="437857" data-postid="5233" data-belowelement="comment-437857" data-respondelement="respond" aria-label="Reply to MM">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437865" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-437865" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 18, 2018 at 2:38 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437865" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>I’m sure you can. Sorry, I don’t know how.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437865" data-commentid="437865" data-postid="5233" data-belowelement="comment-437865" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-437859" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-437859" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/4cacef8937b1a3db309c7ba456c6f66a.png" srcset="https://secure.gravatar.com/avatar/4cacef8937b1a3db309c7ba456c6f66a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Anthony The Koala</span>
+	                <span class="date">May 18, 2018 at 1:25 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437859" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Dear Dr Jason,<br>
+Have you encountered situations where if you reject the null hypothesis, there is a chance of accepting it. Conversely if you accept the null hypothesis there is a chance that it is rejected?</p>
+<p>In other words what to do if you encounter false positives or false negatives. See <a href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors" rel="nofollow ugc">https://en.wikipedia.org/wiki/Type_I_and_type_II_errors</a>.</p>
+<p>Thank you,<br>
+Anthony of Belfield</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437859" data-commentid="437859" data-postid="5233" data-belowelement="comment-437859" data-respondelement="respond" aria-label="Reply to Anthony The Koala">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-437866" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-437866" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 18, 2018 at 2:40 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437866" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>The p-value is a probability, so there is always a chance of an error, specifically a finding that is a statistical fluke but not representative.</p>
+<p>In the past, if I am skeptical of the results of an experimental result, I will:</p>
+<p>– Repeat the experiment many times to see if we had a fluke<br>
+– Increase the sample sizes to improve the robustness of the finding.<br>
+– Use the result anyway.</p>
+<p>It takes a lot of discipline to design experiments sufficiently well to trust the results. To care about your reputation and trust your reputation on the results. Real scientists are rare. Real science is hard.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-437866" data-commentid="437866" data-postid="5233" data-belowelement="comment-437866" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-439665" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-439665" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/517b78f97623cf31d512e7515689e8f0.jpeg" srcset="https://secure.gravatar.com/avatar/517b78f97623cf31d512e7515689e8f0?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Fabian Ockenfels</span>
+	                <span class="date">June 4, 2018 at 3:11 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-439665" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>“For example, if alpha was 5%, it suggests that (at most) 1 time in 20 that the null hypothesis would be mistakenly rejected or failed to be rejected because of the statistical noise in the data sample.”</p>
+<p>This is partly incorrect. While an alpha of 5% does limit the probability of type I errors (false positive) it does not affect type II errors in the same way. The statement of “mistakenly failing to reject” (false negative) H0 in at most one of 20 times does not hold at the specified significance level alpha.</p>
+<p>In the case of type II errors you are interested in controlling beta. For reference see <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2996198/#!po=87.9310" rel="nofollow ugc">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2996198/#!po=87.9310</a> (α,β,AND POWER)</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-439665" data-commentid="439665" data-postid="5233" data-belowelement="comment-439665" data-respondelement="respond" aria-label="Reply to Fabian Ockenfels">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-439695" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-439695" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">June 4, 2018 at 6:32 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-439695" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks for sharing.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-439695" data-commentid="439695" data-postid="5233" data-belowelement="comment-439695" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-480682" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-480682" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/05989fc5035c55e466dd054392b7f13e.png" srcset="https://secure.gravatar.com/avatar/05989fc5035c55e466dd054392b7f13e?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Stas</span>
+	                <span class="date">April 16, 2019 at 5:55 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-480682" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>&gt; A smaller alpha value suggests a more robust interpretation of the null hypothesis<br>
+Can you explain please what is meant by “More robust interpretation”? Does it mean that we need more investigation in such cases with smaller alpha?</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-480682" data-commentid="480682" data-postid="5233" data-belowelement="comment-480682" data-respondelement="respond" aria-label="Reply to Stas">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-480802" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2 parent">
+
+	      	<div id="li-comment-480802" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">April 17, 2019 at 6:56 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-480802" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>A more likely outcome.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-480802" data-commentid="480802" data-postid="5233" data-belowelement="comment-480802" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-515469" class="comment even depth-3 parent">
+
+	      	<div id="li-comment-515469" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/f849951b9518c00e22468f5ad4011769.png" srcset="https://secure.gravatar.com/avatar/f849951b9518c00e22468f5ad4011769?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Dr.Suvendu Kumar Mohanty</span>
+	                <span class="date">December 17, 2019 at 12:15 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515469" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Very useful</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515469" data-commentid="515469" data-postid="5233" data-belowelement="comment-515469" data-respondelement="respond" aria-label="Reply to Dr.Suvendu Kumar Mohanty">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-515506" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-4">
+
+	      	<div id="li-comment-515506" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">December 17, 2019 at 6:36 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515506" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515506" data-commentid="515506" data-postid="5233" data-belowelement="comment-515506" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-480896" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-480896" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/74d875a08b920df8aa5ad8d8ade17e98.png" srcset="https://secure.gravatar.com/avatar/74d875a08b920df8aa5ad8d8ade17e98?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Mhzed</span>
+	                <span class="date">April 17, 2019 at 4:45 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-480896" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hi Jason,</p>
+<p>I feel that going through a concrete example (as you often do in your other posts) will enhance this already excellent post’s readability further with an a higher confidence level, <img draggable="false" role="img" class="emoji" alt="🙂" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/1f642.svg"></p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-480896" data-commentid="480896" data-postid="5233" data-belowelement="comment-480896" data-respondelement="respond" aria-label="Reply to Mhzed">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-481011" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-481011" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">April 18, 2019 at 8:21 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-481011" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks, you can work through some examples here:<br>
+<a href="https://machinelearningmastery.com/parametric-statistical-significance-tests-in-python/" rel="nofollow ugc">https://machinelearningmastery.com/parametric-statistical-significance-tests-in-python/</a></p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-481011" data-commentid="481011" data-postid="5233" data-belowelement="comment-481011" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-488271" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-488271" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/fe9700d1c03d06b2ed8af470e39eb265.png" srcset="https://secure.gravatar.com/avatar/fe9700d1c03d06b2ed8af470e39eb265?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Sudhanshu</span>
+	                <span class="date">June 8, 2019 at 10:51 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488271" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hey Jason,</p>
+<p>For checking if variances are equal in two groups, we use F-test where we compare s1^2/s2^2 to a F-distribution which has degrees of freedom equal to s1 and s2, where s1^2 and s2^2 are estimated variances of the two distribution.</p>
+<p>I guess we can also do s1^2 -s2^2 and compare it to a chi-squared distribution and it will be chi-square test. I guess we don’t do it because of Neyman-Pearson Lemma which says that likelihood test is most powerful and here F-test is LR test. </p>
+<p>However, I don’t understand  why we don’t we test (s1^2-s2^2)/(s2^2) as we do while testing significance for subsets of coefficients in multiple linear regression. Why do we subtract 1 from likelihood ratio in multiple linear regression whereas here we do not. What drives the design of a test-statistic?</p>
+<p>I really need help in understanding this. I have searched the entire net. I could not find any answer to this.</p>
+<p>Thanks in Advance</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488271" data-commentid="488271" data-postid="5233" data-belowelement="comment-488271" data-respondelement="respond" aria-label="Reply to Sudhanshu">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-488335" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-488335" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">June 9, 2019 at 6:18 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488335" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Sorry, I don’t have tutorials on comparing variances, I hope to cover it in the future.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488335" data-commentid="488335" data-postid="5233" data-belowelement="comment-488335" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-488542" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-488542" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/e2dbf5477f5d5076f29158b41aec4e0e.png" srcset="https://secure.gravatar.com/avatar/e2dbf5477f5d5076f29158b41aec4e0e?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Sudhanshu</span>
+	                <span class="date">June 11, 2019 at 11:41 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488542" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hi Jason. I need your help in understanding this technical detail. Why this contradiction is there in design of two statistics.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488542" data-commentid="488542" data-postid="5233" data-belowelement="comment-488542" data-respondelement="respond" aria-label="Reply to Sudhanshu">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-488550" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-488550" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">June 11, 2019 at 2:22 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488550" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>What do you mean exactly? Can you elaborate?</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-488550" data-commentid="488550" data-postid="5233" data-belowelement="comment-488550" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-515447" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-515447" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/3c733785c81ffe2b3af18e872a0f70fa.jpeg" srcset="https://secure.gravatar.com/avatar/3c733785c81ffe2b3af18e872a0f70fa?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Yoni Krichevsky</span>
+	                <span class="date">December 16, 2019 at 8:09 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515447" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hi Jason,<br>
+I believe there is a typo in the link above.  The text “How to Calculate Parametric Statistical Hypothesis Tests in Python” appears twice both when talking about Parametric and Non-Parametric links.<br>
+Thanks for the awesome website!<br>
+Yoni</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515447" data-commentid="515447" data-postid="5233" data-belowelement="comment-515447" data-respondelement="respond" aria-label="Reply to Yoni Krichevsky">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-515499" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-515499" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">December 17, 2019 at 6:32 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515499" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks Yoni, fixed!</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-515499" data-commentid="515499" data-postid="5233" data-belowelement="comment-515499" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-529109" class="comment even thread-even depth-1 parent">
+
+	      	<div id="li-comment-529109" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/4e5b34a26a7d59ca653ed9c551c1aabe.png" srcset="https://secure.gravatar.com/avatar/4e5b34a26a7d59ca653ed9c551c1aabe?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://ivonnics.com/" rel="external nofollow ugc" class="url">Jose</a></span>
+	                <span class="date">April 10, 2020 at 7:52 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-529109" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Hi Jason!<br>
+You do not have an idea of how much your articles have helped me to learn about Python, Machine Learning and Statistics, thank you so much for writing them…<br>
+Just an observation:</p>
+<p>Where it says:</p>
+<p>If p-value &gt; alpha: Fail to reject the null hypothesis (i.e. not signifiant result).<br>
+ it should says:</p>
+<p>If p-value &gt; alpha: Fail to reject the null hypothesis (i.e. not signifiCant result).</p>
+<p>I know it’s a minor thing, but your wonderful articles deserve to be error free…<br>
+Thanks again<br>
+José</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-529109" data-commentid="529109" data-postid="5233" data-belowelement="comment-529109" data-respondelement="respond" aria-label="Reply to Jose">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-529155" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-529155" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">April 10, 2020 at 8:40 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-529155" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Thanks!</p>
+<p>Fixed.</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-529155" data-commentid="529155" data-postid="5233" data-belowelement="comment-529155" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li id="comment-535933" class="comment even thread-odd thread-alt depth-1 parent">
+
+	      	<div id="li-comment-535933" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/f3fcbbdc6f3fe380f49d76b934676853.png" srcset="https://secure.gravatar.com/avatar/f3fcbbdc6f3fe380f49d76b934676853?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name">Krishnamita Banerjee</span>
+	                <span class="date">May 22, 2020 at 6:28 pm</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-535933" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>I think the Type 2 error is true negative, not false negative!!</p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-535933" data-commentid="535933" data-postid="5233" data-belowelement="comment-535933" data-respondelement="respond" aria-label="Reply to Krishnamita Banerjee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	<ul class="children">
+
+		<li id="comment-536003" class="comment byuser comment-author-jasonb bypostauthor odd alt depth-2">
+
+	      	<div id="li-comment-536003" class="comment-container">
+
+					                <div class="avatar"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/a0942b56b07831ac15d4a168a750e34a(1).png" srcset="https://secure.gravatar.com/avatar/a0942b56b07831ac15d4a168a750e34a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo" height="40" width="40"></div>
+	            
+		      	<div class="comment-head">
+
+	                <span class="name"><a href="http://machinelearningmastery.com/" rel="external nofollow ugc" class="url">Jason Brownlee</a></span>
+	                <span class="date">May 23, 2020 at 6:16 am</span>
+	                <span class="perma"><a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-536003" title="Direct link to this comment">#</a></span>
+	                <span class="edit"></span>
+
+				</div><!-- /.comment-head -->
+
+		   		<div class="comment-entry">
+
+				<p>Type II is false negative:<br>
+<a href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors" rel="nofollow ugc">https://en.wikipedia.org/wiki/Type_I_and_type_II_errors</a></p>
+
+				
+	                <div class="reply">
+	                    <a rel="nofollow" class="comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#comment-536003" data-commentid="536003" data-postid="5233" data-belowelement="comment-536003" data-respondelement="respond" aria-label="Reply to Jason Brownlee">Reply</a>	                </div><!-- /.reply -->
+
+				</div><!-- /comment-entry -->
+
+			</div><!-- /.comment-container -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			</ol>
+		 	</div>	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://machinelearningmastery.com/statistical-hypothesis-tests/#respond" style="display:none;">Click here to cancel reply.</a></small></h3><form action="https://machinelearningmastery.com/wp-comments-post.php?wpe-comment-post=mlmastery" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label class="hide" for="comment">Comment</label> <textarea tabindex="4" id="comment" name="comment" cols="50" rows="10" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" class="txt" tabindex="1" value="" size="30" aria-required="true"><label for="author">Name <span class="required">(required)</span></label> </p>
+<p class="comment-form-email"><input id="email" name="email" type="text" class="txt" tabindex="2" value="" size="30" aria-required="true"><label for="email">Email (will not be published) <span class="required">(required)</span></label> </p>
+<p class="comment-form-url"><input id="url" name="url" type="text" class="txt" tabindex="3" value="" size="30"><label for="url">Website</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit Comment"> <input type="hidden" name="comment_post_ID" value="5233" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="5ff06302fb"></p><p style="display: none;"></p><input type="hidden" id="ak_js" name="ak_js" value="1590286122367"></form>	</div><!-- #respond -->
+	     
+            </section><!-- /#main -->
+                
+            <aside id="sidebar">
+<div id="woo_blogauthorinfo-2" class="widget widget_woo_blogauthorinfo"><span class="left"><img alt="" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/1d75d46040c28497f0dee5d8e100db37.jpeg" srcset="https://secure.gravatar.com/avatar/1d75d46040c28497f0dee5d8e100db37?s=170&amp;d=mm&amp;r=g 2x" class="avatar avatar-85 photo" height="85" width="85"></span>
+<p></p><h4>Welcome!</h4>
+My name is <em>Jason Brownlee</em> PhD, and I <strong>help developers</strong> get results with <strong>machine learning</strong>.<br>
+<a href="https://machinelearningmastery.com/about">Read more</a><p></p>
+<div class="fix"></div>
+</div><div id="custom_html-79" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><h4>Never miss a tutorial:</h4>
+<br>
+<div style="text-align: left;">
+<a href="https://www.linkedin.com/company/machine-learning-mastery/"><img src="./A Gentle Introduction to Statistical Hypothesis Testing_files/small_icon_blue_linkedin3.png" alt="LinkedIn"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://twitter.com/TeachTheMachine"><img src="./A Gentle Introduction to Statistical Hypothesis Testing_files/small_icon_blue_twitter3.png" alt="Twitter"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://www.facebook.com/MachineLearningMastery/"><img src="./A Gentle Introduction to Statistical Hypothesis Testing_files/small_icon_blue_facebook3.png" alt="Facebook"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://machinelearningmastery.com/newsletter/"><img src="./A Gentle Introduction to Statistical Hypothesis Testing_files/small_icon_blue_email3.png" alt="Email Newsletter"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://machinelearningmastery.com/rss-feed/"><img src="./A Gentle Introduction to Statistical Hypothesis Testing_files/small_icon_blue_rss3.png" alt="RSS Feed"></a>
+</div></div></div><div id="custom_html-58" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><h4>Picked for you:</h4>
+<br>
+<div class="display-posts-listing image-left"><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/k-fold-cross-validation/"><img width="150" height="150" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/A-Gentle-Introduction-to-k-fold-Cross-Validation-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="A Gentle Introduction to k-fold Cross-Validation"></a> <a class="title" href="https://machinelearningmastery.com/k-fold-cross-validation/" rel="nofollow">A Gentle Introduction to k-fold Cross-Validation</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/statistics-for-machine-learning-mini-course/"><img width="150" height="150" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/Statistics-for-Machine-Learning-7-Day-Mini-Course-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Statistics for Machine Learning (7-Day Mini-Course)"></a> <a class="title" href="https://machinelearningmastery.com/statistics-for-machine-learning-mini-course/" rel="nofollow">Statistics for Machine Learning (7-Day Mini-Course)</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/"><img width="150" height="150" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/A-Gentle-Introduction-to-Normality-Tests-in-Python-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="A Gentle Introduction to Normality Tests in Python"></a> <a class="title" href="https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/" rel="nofollow">A Gentle Introduction to Normality Tests in Python</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/calculate-bootstrap-confidence-intervals-machine-learning-results-python/"><img width="150" height="150" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/How-to-Calculate-Bootstrap-Confidence-Intervals-For-Machine-Learning-Results-in-Python-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="How to Calculate Bootstrap Confidence Intervals For Machine Learning Results in Python"></a> <a class="title" href="https://machinelearningmastery.com/calculate-bootstrap-confidence-intervals-machine-learning-results-python/" rel="nofollow">How to Calculate Bootstrap Confidence Intervals For Machine Learning Results in Python</a></div><div class="listing-item"><a class="image" href="https://machinelearningmastery.com/how-to-use-correlation-to-understand-the-relationship-between-variables/"><img width="150" height="150" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/Scatter-plot-of-the-test-correlation-dataset-150x150.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Scatter plot of the test correlation dataset"></a> <a class="title" href="https://machinelearningmastery.com/how-to-use-correlation-to-understand-the-relationship-between-variables/" rel="nofollow">How to Calculate Correlation Between Variables in Python</a></div></div></div></div><div id="custom_html-14" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div style="text-align: center;">
+	<p></p><h4>Loving the Tutorials?</h4><p></p>
+
+<p>The <a href="https://machinelearningmastery.com/statistics_for_machine_learning/" rel="nofollow">Statistics for Machine Learning</a> EBook is where I keep the <strong><i>Really Good</i></strong> stuff.</p>
+
+	<a href="https://machinelearningmastery.com/statistics_for_machine_learning/" class="woo-sc-button  custom" style="background:;border-color:"><span class="woo-">See What's Inside</span></a>
+
+</div></div></div></aside><!-- /#sidebar -->
+
+		</div><!-- /#main-sidebar-container -->         
+
+		
+    </div><!-- /#content -->
+	
+	<footer id="footer" class="col-full">
+
+		
+		<div id="copyright" class="col-left">
+			<p>© 2020 Machine Learning Mastery Pty. Ltd. All Rights Reserved.<br>
+Address: PO Box 206, Vermont Victoria 3133, Australia. | ACN: 626 223 336.<br>
+<a href="https://www.linkedin.com/company/machine-learning-mastery/">LinkedIn</a> |
+<a href="http://twitter.com/TeachTheMachine">Twitter</a> |
+<a href="https://www.facebook.com/MachineLearningMastery/">Facebook</a> |
+<a href="https://machinelearningmastery.com/newsletter/">Newsletter</a> |
+<a href="https://machinelearningmastery.com/rss-feed/">RSS</a></p>		</div>
+
+		<div id="credit" class="col-right">
+			<p><a href="https://machinelearningmastery.com/privacy/">Privacy</a> | 
+<a href="https://machinelearningmastery.com/disclaimer/">Disclaimer</a> | 
+<a href="https://machinelearningmastery.com/terms-of-service/">Terms</a> | 
+<a href="https://machinelearningmastery.com/contact/">Contact</a> |
+<a href="https://machinelearningmastery.com/sitemap/">Sitemap</a> |
+<a href="https://machinelearningmastery.com/site-search/">Search</a></p>		</div>
+
+	</footer>
+
+	
+	</div><!-- /#inner-wrapper -->
+
+</div><!-- /#wrapper -->
+
+<div class="fix"></div><!--/.fix-->
+
+<!-- Drip -->
+<script type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '9556588';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/9556588.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+<!-- end Drip --><script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/comment-reply.min.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/machinelearningmastery.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/scripts.js.download"></script>
+<script type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/wp-embed.min.js.download"></script>
+<script async="async" type="text/javascript" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/form.js.download"></script>
+<script type="text/javascript">function initTwitCount(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://static1.twitcount.com/js/twitcount.js';fjs.parentNode.insertBefore(js,fjs)}}
+        var ssb_twit_count_init=!1;addEventListener('mouseover',function(event){if(!ssb_twit_count_init){initTwitCount(document,'script','twitcount_plugins')
+        ssb_twit_count_init=!0}})</script>
+<div style="position: absolute; right: 0px; left: 0px; bottom: 0px; top: 0px; z-index: 2147483646; background: black; width: 100%; opacity: 0.5; display: none; height: 16347px;"></div><iframe src="./A Gentle Introduction to Statistical Hypothesis Testing_files/saved_resource.html" style="position: absolute; left: 0px; top: 0px; width: 100%; display: none; border: none; z-index: 2147483647; height: 608px;"></iframe><iframe src="./A Gentle Introduction to Statistical Hypothesis Testing_files/saved_resource(1).html" style="position: absolute; left: 0px; top: 0px; width: 100%; display: none; border: none; z-index: 2147483647; height: 608px;"></iframe><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./A Gentle Introduction to Statistical Hypothesis Testing_files/widget_iframe.2a008290075125adde2d7b849b06a0bb.html" title="Twitter settings iframe" style="display: none;"></iframe><div class="drip-tab-container">
+  <div id="drip-2211" class="drip-tab bottom right no-image classic">
+    <div id="drip-header-2211" class="drip-header drip-hidden">
+      <a href="https://machinelearningmastery.com/statistical-hypothesis-tests/#" id="drip-toggle-2211" class="drip-toggle">
+        <h2 id="drip-teaser-2211">Start Machine Learning</h2>
+        <span id="drip-tab-up-2211" class="drip-arrow up">
+          <svg width="12px" height="8px" viewBox="1362 659 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <polygon id="right_angle" stroke="none" fill="#FFFFFF" fill-rule="evenodd" transform="translate(1368.000000, 662.703125) rotate(-90.000000) translate(-1368.000000, -662.703125) " points="1364.29688 667.296875 1368.89062 662.703125 1364.29688 658.109375 1365.70312 656.703125 1371.70312 662.703125 1365.70312 668.703125"></polygon>
+          </svg>
+        </span>
+        <span id="drip-tab-down-2211" class="drip-arrow down" style="display: none"></span>
+      </a>
+    </div>
+
+    <div id="drip-content-2211" class="drip-content drip-clearfix" style="height: auto; bottom: 0px;">
+      <div id="drip-form-panel-2211" class="drip-panel" style="display: block;">
+        <a id="drip-close-2211" class="drip-close">×</a>
+        <h3 id="drip-content-header-2211">Start Machine Learning</h3>
+        <div id="drip-scroll-2211" class="drip-scroll">
+          <div class="drip-clearfix">
+            
+            <div class="drip-description">You can master applied Machine Learning&nbsp;<br>
+<strong>without math or fancy degrees</strong>.<br>
+Find out how in this <em>free</em>&nbsp;and <em>practical</em>&nbsp;course.</div>
+          </div>
+          <form id="drip-form-2211">
+            <div style="display: none">
+              <input type="hidden" name="form_id" value="2211">
+            </div>
+            <dl class="no-labels">
+              
+                
+                  <dt>Email Address</dt>
+                  <dd class="drip-clearfix">
+                    
+                      <input type="email" name="fields[email]" value="" placeholder="Email Address" class="drip-text-field">
+                      <div id="drip-errors-for-email-2211" class="drip-errors"></div>
+                    
+                  </dd>
+                
+              
+                
+                  <dt></dt>
+                  <dd class="drip-clearfix">
+                    
+                      <div class="classic--checkbox hidden" data-container="eu-checkbox">
+                        <input type="hidden" name="fields[eu_consent]" id="drip-field-eu_consent-2211-denied" value="denied" disabled="disabled">
+                        <input type="checkbox" name="fields[eu_consent]" id="drip-field-eu_consent-2211" value="granted" disabled="disabled">
+                        <label for="drip-field-eu_consent-2211">I consent to receive information about services and special offers by email. For more information, see the <a href="https://machinelearningmastery.com/privacy/">Privacy Policy</a>.</label>
+                      </div>
+                    
+                  </dd>
+                
+              
+                
+                  <input type="hidden" name="fields[eu_consent_message]" value="I consent to receive information about services and special offers by email. For more information, see the Privacy Policy (https://machinelearningmastery.com/privacy/).">
+                
+              
+              
+              <div style="display: none;" aria-hidden="true">
+                <dt for="website">Website</dt>
+                <dd>
+                  <input type="text" id="website" name="website" placeholder="Website" class="drip-text-field" tabindex="-1" autocomplete="false" value="">
+                </dd>
+              </div>
+            </dl>
+            <div class="form-controls">
+              <input type="submit" name="submit" value="Start My Email Course" id="drip-submit-2211" class="drip-submit-button">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="drip-success-panel-2211" class="drip-success drip-panel drip-clearfix" style="display: none">
+        <a id="drip-hide-2211" class="drip-close">×</a>
+        <h3>Thank you for signing up!</h3>
+        <p class="drip-description">Please check your email and click the link provided to confirm your subscription.</p>
+      </div>
+
+      
+    </div>
+  </div>
+</div></body></html>
